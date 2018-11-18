@@ -29,7 +29,7 @@ class Resourceinfo(models.Model):
     name = models.CharField('名称', max_length=40)
     link = models.URLField('链接')
     column = models.ForeignKey(Resourceclass, verbose_name='分类')
-    # summary = models.TextField('简介', default='', blank=False, )
+    summary = models.TextField('简介', default='', blank=False, )
     ranking = models.IntegerField('顺序', unique=True, blank=False)
     createtime = models.DateTimeField('创建时间', auto_now_add=True, editable=True)
     updatetime = models.DateTimeField('更新时间', auto_now=True)

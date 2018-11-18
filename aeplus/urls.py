@@ -21,6 +21,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ueditor/', include(DjangoUeditor_urls)),
+    url(r'^partner/', include('partner.urls')),
+    url(r'^blog/', include('blog.urls')),
+    url(r'^subscribe/', include('subscribe.urls')),
+    url(r'^institute/', include('institute.urls')),
+    url(r'^resource/', include('resource.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     from django.conf.urls.static import static

@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'partner',
     'prolib',
     'resource',
+    'subscribe',
     'DjangoUeditor',
 )
 
@@ -146,6 +147,15 @@ SUIT_CONFIG = {
               'app': 'blog',
               'models': ('Blogclass','Bloginfo',)
               },
+             {'label': '订阅管理',
+              'app': 'subscribe',
+              'models': ('SubscribeUserList', 'Subscribeinfo',)
+              },
              ),
 
 }
+
+SMTP_SERVER = 'smtp.qq.com'
+FROM_ADDR = '2860847900@qq.com'
+PASSWORD = 'pkliopftothjdhcc'
+
