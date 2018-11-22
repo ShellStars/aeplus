@@ -7,5 +7,5 @@ from django.conf.urls import patterns, url, include
 from .views import *
 from aeplus import settings
 urlpatterns = patterns('',
-    url(r'^list/', parnterlist, name='parnterlist'),
+    url(r'^get_partner_list/', parnterlist, name='parnterlist'),
 )

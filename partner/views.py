@@ -5,9 +5,14 @@ from aeplus.tools import *
 
 # Create your views here.
 def parnterlist(requests):
-    partnerinfo = Partnerinfo.objects.filter(published=True).values('logopic','name','link').order_by('ranking')[0:16]
+    jsondata = json.loads(requests.body)
+    page_no = jsondata['page_no']
+    page_item = jsondata['page_item']
+    partnerinfo = Partnerinfo.objects.filter(published=True).values('logopic','name','link').order_by('ranking')
+    total = partnerinfo.count()
+    partnerinfo = partnerinfo[(page_no - 1) * page_item:page_no * page_item]
     hosthead = requests.scheme + '://' + requests.get_host() + '/'
     for i in partnerinfo:
         i['logopic'] = hosthead + i['logopic']
-    results = data_formatter(data_list=list(partnerinfo))
+    results = data_formatter(total=total,data_list=list(partnerinfo))
     return HttpResponse(results, content_type="application/json")

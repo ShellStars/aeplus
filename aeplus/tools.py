@@ -14,15 +14,17 @@ import smtplib
     author:Lindow
     date:2018/11/18
 """
-def data_formatter(data_list=None, message="success", status=200):
+def data_formatter(total=None,data_list=None, message="success", status=2000):
     results = {
         "message": message,
-        "status": status
+        "status": status,
+        "result": {}
     }
 
     if isinstance(data_list, list):
-        results["total"] = len(data_list)
-        results["datas"] = data_list
+        results["total"] = total
+        results["result"]["datas"] = data_list
+    print json.dumps(results)
     return json.dumps(results,ensure_ascii=False)
 
 
