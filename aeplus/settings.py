@@ -129,7 +129,7 @@ SUIT_CONFIG = {
     'MENU': (
              {'label': '研究院管理',
               'app': 'institute',
-              'models': ('Instituteclass','Instituteinfo',)
+              'models': ('Instituteclass','Instituteinfo','Schoolinfo',)
               },
              {'label': '合作伙伴管理',
               'app': 'partner',

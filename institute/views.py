@@ -4,17 +4,36 @@ from models import *
 from aeplus.tools import *
 
 # Create your views here.
-def institutelist(requests):
+
+
+def taglist(requests):
     Instituteclasslist = Instituteclass.objects.all().values('id','name').order_by('ranking')
-    mixdata = {int(k['id']):str(k['name']) for k in Instituteclasslist}
-    result = []
-    for i in mixdata.keys():
-        dic = {}
-        itemsinfo = Instituteinfo.objects.filter(published=True,column=i).values('headpic','name','summary').order_by('ranking')
-        hosthead = requests.scheme + '://' + requests.get_host() + '/'
-        for j in itemsinfo:
-            j['headpic'] = hosthead + j['headpic']
-        dic[mixdata[i]] = list(itemsinfo)
-        result.append(dic)
-    results = data_formatter(data_list=list(result))
+    total = Instituteclasslist.count()
+    results = data_formatter(total=total,data_list=list(Instituteclasslist))
+    return HttpResponse(results, content_type="application/json")
+
+
+def institutelist(requests):
+    jsondata = json.loads(requests.body)
+    page_no = jsondata['page_no']
+    page_item = jsondata['page_item']
+    id = jsondata['id']
+    Instituteclasslist = Instituteinfo.objects.filter(column=id,published=True).values('headpic','name','summary').order_by('ranking')
+    total = Instituteclasslist.count()
+    Instituteclasslist = Instituteclasslist[(page_no - 1) * page_item:page_no * page_item]
+    hosthead = requests.scheme + '://' + requests.get_host() + '/'
+    for i in Instituteclasslist:
+        i['headpic'] = hosthead + i['headpic']
+    results = data_formatter(total=total,data_list=list(Instituteclasslist))
+    return HttpResponse(results, content_type="application/json")
+
+
+def schoolinfo(requests):
+    shinfo = Schoolinfo.objects.filter(published=True).values('logopic','name').order_by('-createtime')
+    total = shinfo.count()
+    hosthead = requests.scheme + '://' + requests.get_host() + '/'
+    for i in shinfo:
+        i['img_url'] = hosthead + i['logopic']
+        del i['logopic']
+    results = data_formatter(total=total, data_list=list(shinfo))
     return HttpResponse(results, content_type="application/json")

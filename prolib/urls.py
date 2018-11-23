@@ -7,6 +7,6 @@ from django.conf.urls import patterns, url, include
 from .views import *
 from aeplus import settings
 urlpatterns = patterns('',
-        url(r'^get_tag_list/', taglist, name='taglist'),
-        url(r'^get_resource_list/', resourcelist, name='resourcelist'),
+    url(r'^get_tag_list/', taglist, name='taglist'),
+    url(r'^get_projects_list/', projectlist, name='projectlist'),
 )

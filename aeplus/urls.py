@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^api/subscribe/', include('subscribe.urls')),
     url(r'^api/institute/', include('institute.urls')),
     url(r'^api/resource/', include('resource.urls')),
+    url(r'^api/prolib/', include('prolib.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     from django.conf.urls.static import static
