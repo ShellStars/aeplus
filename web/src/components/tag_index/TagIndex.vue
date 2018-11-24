@@ -111,7 +111,10 @@ export default {
   }
 }
 </script>
-
+<style>
+  .el-input--suffix .el-input__inner{height: 30px;}
+  .el-select>.el-input {padding: 5px;}
+</style>
 <style scoped>
   #tag_indexes {
     height: 50px;
