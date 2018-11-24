@@ -155,7 +155,10 @@ SUIT_CONFIG = {
 
 }
 
-SMTP_SERVER = 'smtp.qq.com'
-FROM_ADDR = '2860847900@qq.com'
-PASSWORD = 'pkliopftothjdhcc'
+# SMTP_SERVER = 'smtp.qq.com'
+# FROM_ADDR = '2860847900@qq.com'
+# PASSWORD = 'pkliopftothjdhcc'
+SMTP_SERVER = 'smtp.gmail.com'
+FROM_ADDR = 'julyorangesae@gmail.com'
+PASSWORD = 'liujiacheng123'
 
