@@ -56,7 +56,7 @@ export default {
         this._data.email_error = '邮箱格式有误'
         return
       }
-      this.$axios.post('/api/api/subscribe/addsubscribe/', {
+      this.$axios.post('/api/subscribe/addsubscribe/', {
         email: inpEmail,
         page: 'overview'
       }).then(response => {

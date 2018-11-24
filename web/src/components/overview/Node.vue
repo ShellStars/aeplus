@@ -25,7 +25,7 @@
               <div class="img">
                 <img :src="node_item.headpic"/>
               </div>
-              <p class="node_des">{{node_item.headpic}}</p>
+              <p class="node_des">{{node_item.node_title}}</p>
               <p class="node_time">{{node_item.node_time}}</p>
             </div>
           </el-col>
@@ -38,7 +38,7 @@
               <div class="img">
                 <img :src="node_item.headpic"/>
               </div>
-              <p class="node_des">{{node_item.headpic}}</p>
+              <p class="node_des">{{node_item.node_title}}</p>
               <p class="node_time">{{node_item.node_time}}</p>
             </div>
           </el-col>
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     getBlogList: function () {
-      this.$axios.get('/api/api/blog/get_blog_list/', {
+      this.$axios.get('/api/blog/get_blog_list/', {
         params: {
           page_no: 1,
           page_item: 10,

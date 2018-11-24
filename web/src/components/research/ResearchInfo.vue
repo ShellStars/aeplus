@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getSchoolInfo: function () {
-      this.$axios.get('/api/api/institute/school_info/', {
+      this.$axios.get('/api/institute/school_info/', {
         params: {
           page: 'research'
         }

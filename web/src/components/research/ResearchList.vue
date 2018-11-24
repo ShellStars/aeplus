@@ -77,7 +77,7 @@ export default {
   methods: {
     getRelationList: function (info) {
       let self = this
-      this.$axios.get('/api/api/institute/get_relation_list/', {
+      this.$axios.get('/api/institute/get_relation_list/', {
         params: {
           page_no: 1,
           page_item: 10,
@@ -98,7 +98,7 @@ export default {
     },
     getTagList: function () {
       let self = this
-      self.$axios.get('/api/api/institute/get_tag_list/', {
+      self.$axios.get('/api/institute/get_tag_list/', {
         params: {
           page: 'research'
         }

@@ -51,7 +51,7 @@ export default {
     },
     getTagList: function () {
       let self = this
-      this.$axios.get('/api/api/prolib/get_tag_list/', {
+      this.$axios.get('/api/prolib/get_tag_list/', {
         params: {
           page_no: 1,
           page_item: 10,
@@ -79,7 +79,7 @@ export default {
     },
     getProjectList: function (info) {
       let self = this
-      this.$axios.get('/api/api/prolib/get_projects_list/', {
+      this.$axios.get('/api/prolib/get_projects_list/', {
         params: {
           page_no: 1,
           page_item: 10,

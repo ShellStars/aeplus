@@ -65,7 +65,7 @@ export default {
       window.open(item.link)
     },
     getPartnerList: function () {
-      this.$axios.get('/api/api/partner/get_partner_list/', {
+      this.$axios.get('/api/partner/get_partner_list/', {
         params: {
           page_no: 1,
           page_item: 16,
