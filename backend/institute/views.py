@@ -14,10 +14,10 @@ def taglist(requests):
 
 
 def institutelist(requests):
-    jsondata = json.loads(requests.body)
-    page_no = jsondata['page_no']
-    page_item = jsondata['page_item']
-    id = jsondata['id']
+    jsondata = json.loads(json.dumps(requests.GET))
+    page_no = int(jsondata['page_no'])
+    page_item = int(jsondata['page_item'])
+    id = int(jsondata['id'])
     Instituteclasslist = Instituteinfo.objects.filter(column=id,published=True).values('headpic','name','summary').order_by('ranking')
     total = Instituteclasslist.count()
     Instituteclasslist = Instituteclasslist[(page_no - 1) * page_item:page_no * page_item]
