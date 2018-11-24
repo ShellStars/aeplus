@@ -12,10 +12,10 @@ def taglist(requests):
 
 
 def projectlist(requests):
-    jsondata = json.loads(requests.body)
-    page_no = jsondata['page_no']
-    page_item = jsondata['page_item']
-    id = jsondata['id']
+    jsondata = json.loads(json.dumps(requests.GET))
+    page_no = int(jsondata['page_no'])
+    page_item = int(jsondata['page_item'])
+    id = int(jsondata['id'])
     Instituteclasslist = Prolibinfo.objects.filter(column=id,published=True).values('logopic','name','summary','website').order_by('-createtime')
     total = Instituteclasslist.count()
     Instituteclasslist = Instituteclasslist[(page_no - 1) * page_item:page_no * page_item]

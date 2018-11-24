@@ -39,9 +39,11 @@ def send_email(emailtitle,content):
     try:
         TO_ADDR = SubscribeUserList.objects.filter(status=True).values_list('email',flat=True)
         smtpObj = smtplib.SMTP()
-        smtpObj.connect(settings.SMTP_SERVER, 25)
+        smtpObj.connect(settings.SMTP_SERVER, 587)
+        smtpObj.starttls()
         smtpObj.login(settings.FROM_ADDR, settings.PASSWORD)
         smtpObj.sendmail(settings.FROM_ADDR, TO_ADDR, msg.as_string())
+        smtpObj.quit()
         return True
     except smtplib.SMTPException:
         return False

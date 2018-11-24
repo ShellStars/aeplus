@@ -4,12 +4,13 @@ import datetime
 import json
 from models import *
 from aeplus.tools import *
+from urlparse import parse_qs
 
 # Create your views here.
 def bloglist(requests):
-    jsondata = json.loads(requests.body)
-    page_no = jsondata['page_no']
-    page_item = jsondata['page_item']
+    jsondata = json.loads(json.dumps(requests.GET))
+    page_no = int(jsondata['page_no'])
+    page_item = int(jsondata['page_item'])
     bloginfo = Bloginfo.objects.filter(published=True).values('headpic','title','createtime').order_by('-createtime')
     total = bloginfo.count()
     bloginfo = bloginfo[(page_no-1)*page_item:page_no*page_item]

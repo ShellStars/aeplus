@@ -12,10 +12,10 @@ def taglist(requests):
 
 
 def resourcelist(requests):
-    jsondata = json.loads(requests.body)
-    page_no = jsondata['page_no']
-    page_item = jsondata['page_item']
-    id = jsondata['id']
+    jsondata = json.loads(json.dumps(requests.GET))
+    page_no = int(jsondata['page_no'])
+    page_item = int(jsondata['page_item'])
+    id = int(jsondata['id'])
     Resourceclasslist = Resourceinfo.objects.filter(column=id,published=True).values('logopic','name','link','summary').order_by('ranking')
     total = Resourceclasslist.count()
     Resourceclasslist = Resourceclasslist[(page_no - 1) * page_item:page_no * page_item]
